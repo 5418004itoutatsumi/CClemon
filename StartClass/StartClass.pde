@@ -1,7 +1,8 @@
+PImage exitImg;
 boolean buttonClicked = false;
-class Start{
+class Start {
   int x, y, xLen, yLen;
-  boolean modeClicked=false; //他のクラスで使えるかも
+  boolean modeClicked = false; //他のクラスで使えるかも
   String str;
   
   Start(String str1, int x1, int y1, int xLen1, int yLen1) {
@@ -28,8 +29,9 @@ class Start{
       strokeJoin(BEVEL);
       fill(255);
       rect(width/2, height/2, width*2/3, height*2/3);
-      fill(255, 0, 0);
-      rect(width*4/5, height/5, 50, 50);
+      imageMode(CENTER);
+      exitImg = loadImage("exit.png");
+      image(exitImg, width*4/5, height/5, 50, 50);
       textSize(20);
       fill(0);
       text("ここにルールが表示されます", width/2, height/3);
@@ -44,7 +46,7 @@ class Start{
   }
   
   void selectDif() {
-    if(buttonClicked==false) {
+    if(buttonClicked == false) {
       textInRect();
     }
   }
