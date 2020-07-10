@@ -1,5 +1,7 @@
-PImage exitImg;
+PImage exitImg, ruleImg;
+boolean isStartMenu = true;
 boolean buttonClicked = false;
+boolean nextClicked = false;
 class Start {
   int x, y, xLen, yLen;
   boolean modeClicked = false; //他のクラスで使えるかも
@@ -18,23 +20,41 @@ class Start {
     strokeJoin(BEVEL);
     fill(#ffc0cb);
     rect(x, y, xLen, yLen);
-    textSize(yLen*(4.0/5.0));
+    textSize(yLen * (4.0/5.0));
     fill(0);
-    text(str, x, y+(yLen/3.0));
+    text(str, x, y + (yLen/3.0));
   }
   
   void showRule() {
-    if(modeClicked) {
-      background(#98fb98);
-      strokeJoin(BEVEL);
-      fill(255);
-      rect(width/2, height/2, width*2/3, height*2/3);
-      imageMode(CENTER);
+    if(isStartMenu == false) {
       exitImg = loadImage("exit.png");
-      image(exitImg, width*4/5, height/5, 50, 50);
-      textSize(20);
-      fill(0);
-      text("ここにルールが表示されます", width/2, height/3);
+      if(nextClicked == false) {
+        background(#98fb98);
+        strokeJoin(BEVEL);
+        fill(255);
+        rect(width/2, height/2, width*2/3, height*2/3);
+        imageMode(CENTER);
+        image(exitImg, width*4/5, height/5, 50, 50);
+        rect(width/2, height - 50, 100, 40);
+        textSize(20);
+        fill(0);
+        text("このゲームはプレイヤー対コンピュータで行う．基本行動には溜める(W)，ガード(A)，弱攻撃(S)，強攻撃(D)があり，プレイヤーとコンピュータは毎ターンコマンド選択をする．お互いが選んだコマンドにより勝敗が決まり，負けるとライフが1減る．先にライフが0になった方の負けとなる．相性表は次のページへGO", width/2, height/2, width/2, height/2);
+        text("次に進む", width/2, height - 40);
+        text("1/2", width - 40, height - 20);
+      } else {
+        background(#98fb98);
+        fill(255);
+        rect(width/2, height/2, width*2/3, height*2/3);
+        imageMode(CENTER);
+        ruleImg = loadImage("rule.png");
+        image(ruleImg, width/2, height/2);
+        image(exitImg, width*4/5, height/5, 50, 50);
+        rect(width/2, height - 50, 100, 40);
+        textSize(20);
+        fill(0);
+        text("前に戻る", width/2, height - 40);
+        text("2/2", width - 40, height - 20);
+      }
     } else {
       textInRect();
     }
@@ -60,7 +80,7 @@ class Start {
   }
 }
 
-Start rule, easy, hard, G, exit;
+Start rule, easy, hard, G, exit, next;
 
 void setup() {
   PFont font = createFont("Meiryo", 50);
@@ -73,6 +93,7 @@ void setup() {
   hard = new Start("上級", width/2, height/2, 200, 100);
   G = new Start("G級", width*4/5, height/2, 200, 100);
   exit = new Start("X", width*4/5, height/5, 50, 50);
+  next = new Start("next", width/2, height - 50, 100, 40);
 }
 
 void draw() {
@@ -90,12 +111,23 @@ void draw() {
 }
 
 void mouseClicked() {
+  if(next.isInside() && isStartMenu == false) {
+    if(nextClicked == false) {
+      nextClicked = true;
+    } else {
+      nextClicked = false;
+    }
+  }
+  
   if(rule.isInside()) {
     rule.modeClicked = true;
+    isStartMenu = false;
   }
+  
   if(rule.modeClicked == true && exit.isInside()) {
     background(#98fb98);
     rule.modeClicked = false;
+    isStartMenu = true;
   }
 
   if(easy.isInside()) {
