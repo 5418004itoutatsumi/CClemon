@@ -1,17 +1,4 @@
-Player c1;
 int playerCm=0;
-void setup(){
-  size(800, 500);
-  textSize(30);
-  c1=new Player();
-}
-
-void draw(){
-  
-  println(c1.playerCommand());
-  c1.count(1);
-}
-  
 class Player{
   int[] timeList={10,5,3};
   int countDown;
