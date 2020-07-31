@@ -1,7 +1,6 @@
 void setup() {
-  size(800, 600);
+  size(400, 400);
 }
 
 void draw() {
-  
 }
