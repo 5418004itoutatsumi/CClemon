@@ -12,7 +12,11 @@ class JudgeWin{
     text(enemy, width / 2 - 50, height / 2 + 100);
   }
   
+<<<<<<< HEAD
   int judgeCommandWin(int playerCommand, int enemyCommand){
+=======
+  int judgecommandWin(int playerCommand, int enemyCommand){
+>>>>>>> JudgeWin
     int result = 0;
     if(playerCommand <= 3 && enemyCommand < playerCommand){
       result = 1;
@@ -35,7 +39,11 @@ class JudgeWin{
   }
   void showResult(int flag){
     if(flag == 1){
+<<<<<<< HEAD
       text("You Win!", width / 2, height / 2);
+=======
+      text("You Win!", width / 2., height / 2);
+>>>>>>> JudgeWin
     }else{
       text("You Lose", width / 2, height / 2);
     }
@@ -55,3 +63,7 @@ String setString(int command){
   }
   return result;
 }
+<<<<<<< HEAD
+=======
+    
+>>>>>>> JudgeWin

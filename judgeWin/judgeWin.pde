@@ -8,8 +8,13 @@ class JudgeWin{
     String player, enemy;
     player = setString(playerCommand);
     enemy = setString(enemyCommand);
+<<<<<<< HEAD
     text(player, width / 2, height / 2 - 100);
     text(enemy, width / 2, height / 2 + 100);
+=======
+    text(player, width / 2 - 50, height / 2 - 100);
+    text(enemy, width / 2 - 50, height / 2 + 100);
+>>>>>>> JudgeWin
   }
   
   int judgecommandWin(int playerCommand, int enemyCommand){
@@ -55,3 +60,7 @@ String setString(int command){
   }
   return result;
 }
+<<<<<<< HEAD
+=======
+    
+>>>>>>> JudgeWin
