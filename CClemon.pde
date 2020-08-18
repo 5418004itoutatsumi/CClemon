@@ -136,7 +136,7 @@ class Enemy {
   }
 
   int selectCommand2(int diff) {
-    int[][] commandTable = {{1, 1, 1, 2, 2, 2, 3, 3, 4, 4}, {1, 1, 2, 2, 2, 3, 3, 3, 4, 4}, {1, 1, 1, 2, 2, 2, 3, 3, 3, 3}};
+    int[][] commandTable = {{1, 1, 1, 2, 2, 2, 3, 3, 4, 4}, {1, 1, 2, 2, 2, 3, 3, 3, 4, 4}, {1, 1, 1, 2, 2, 2, 3, 3, 3, 4}, {1, 1, 2, 2, 2, 2, 3, 3, 3, 3}};
     while (true) {
       int i = int(random(10));
       command = commandTable[diff - 1][i];
